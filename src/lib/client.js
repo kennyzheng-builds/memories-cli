@@ -64,7 +64,7 @@ export class MemoriesClient {
       const code = data.code || res.status;
       // Provide human-readable hints for known error codes
       const hints = {
-        '0402': ' (insufficient credits - check your plan at api-platform.memories.ai)',
+        '0402': ' (insufficient credits - check your plan at memories.ai/app/service/key)',
         '0429': ' (rate limited - wait and retry)',
         '0001': '',
       };

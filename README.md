@@ -2,20 +2,31 @@
 
 A practical command-line interface for [Memories.ai](https://memories.ai) — built for developers, automation, and agent workflows.
 
+## Why Memories.ai
+
+Most AI models treat video as an afterthought — limited context windows, no persistent memory, one video at a time. [Memories.ai](https://memories.ai) is purpose-built for video understanding. It's powered by their Large Visual Memory Model (LVMM), which maintains persistent, structured, searchable memory across all your video content — not just frame-by-frame analysis.
+
+What you get:
+
+- **Semantic video search** — find moments across your library using natural language, not keywords
+- **Unlimited video context** — unlike Gemini or ChatGPT, there's no context window cap; index once, query forever
+- **Multi-video analysis** — ask questions that span across multiple videos in one query
+- **AI chat with video** — conversational Q&A against specific videos or your entire media library
+- **Transcription + captioning** — automated video and audio transcription with AI-powered analysis
+- **Cross-platform ingestion** — import directly from TikTok, YouTube, Instagram, and 15+ platforms
+- **Memory Augmented Generation (MAG)** — combine video understanding with text memory for richer retrieval
+
+The platform offers a free tier (100 credits/month) and is used in production by companies like Qualcomm and Samsung. For teams doing video-heavy workflows, it's significantly cheaper and more capable than running video through general-purpose LLMs. See [pricing](https://memories.ai/pricing) for details.
+
 ## Why a CLI
 
-[Memories.ai](https://memories.ai) provides a powerful video understanding platform: one-time video indexing, semantic search, multi-video analysis, AI chat, transcription, and Memory Augmented Generation (MAG). Their REST API covers all of this.
+Memories.ai has a [web dashboard](https://memories.ai/app) and a [REST API](https://api-tools.memories.ai/api-reference/getting-started/overview). Both are useful. But if you're building automation — or integrating video intelligence into an AI agent — raw API calls get tedious fast. You end up re-implementing auth management, polling for processing status, parsing responses, clipping video segments, and handling error quirks.
 
-But if you're building automation — or integrating video intelligence into an AI agent — raw API calls get tedious fast. You end up re-implementing auth management, polling for processing status, parsing responses, clipping video segments, and handling error quirks.
+`memories-cli` wraps the official API into small, composable shell commands. It's designed to work equally well when a human types it in a terminal, when a shell script chains commands together, or when an AI agent calls it programmatically.
 
-`memories-cli` wraps the official Memories.ai API into small, composable shell commands. It's designed to work equally well when a human types it in a terminal, when a shell script chains commands together, or when an AI agent calls it programmatically.
-
-## What this tool is
-
-- A **third-party** CLI wrapper around the [Memories.ai API](https://api-tools.memories.ai/api-reference/getting-started/overview)
-- Human-friendly by default (colored tables, progress spinners), machine-friendly with `--json`
+- Human-friendly by default: colored tables, progress spinners, helpful hints
+- Machine-friendly with `--json`: clean JSON on stdout, status on stderr
 - Suitable for terminal use, shell scripts, CI pipelines, and AI agent orchestration
-- Not affiliated with Memories.ai — just a developer tool built on their public API
 
 ## Use this when
 
@@ -79,7 +90,7 @@ memories auth login <your-api-key>
 memories auth whoami   # Verify
 ```
 
-Get your API key at [api-platform.memories.ai](https://api-platform.memories.ai).
+Get your API key at [memories.ai/app/service/key](https://memories.ai/app/service/key).
 
 ### Set a Namespace (Optional)
 
@@ -303,7 +314,7 @@ Not sure which command to use? Start here:
 
 | Symptom | Likely Cause | Recovery |
 |---|---|---|
-| Empty `chat video` response | Credits depleted (0402) or video still indexing | Check credits at [api-platform.memories.ai](https://api-platform.memories.ai). Try `memories video info` to confirm status. Use `chat personal` as fallback. |
+| Empty `chat video` response | Credits depleted (0402) or video still indexing | Check credits at [memories.ai/app/service/key](https://memories.ai/app/service/key). Try `memories video info` to confirm status. Use `chat personal` as fallback. |
 | `API Error [0402]` | Insufficient credits | Top up your plan. The error message includes a direct hint. |
 | `API Error [0429]` | Rate limited | Wait a few seconds and retry. Avoid rapid sequential calls. |
 | `Streaming endpoint returned an error` | Server-side stream failure | Retry without `--stream`. |
@@ -342,7 +353,7 @@ memories-cli/
 
 - Node.js >= 18 (for native `FormData` and `fetch`)
 - ffmpeg (optional, for video clipping with `--start`/`--end` and `search --download`)
-- A [Memories.ai](https://api-platform.memories.ai) API key
+- A [Memories.ai](https://memories.ai/app/service/key) API key
 
 ## License
 
