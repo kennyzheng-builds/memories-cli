@@ -81,7 +81,7 @@ memories auth login <your-api-key>
 memories auth whoami
 ```
 
-Get your API key at [app.memories.ai](https://app.memories.ai).
+Get your API key at [api-platform.memories.ai](https://api-platform.memories.ai).
 
 ### Set a Namespace (Optional)
 
@@ -291,7 +291,7 @@ memories-cli/
 
 - Node.js >= 18 (for native `FormData` and `fetch`)
 - ffmpeg (optional, for video clipping — `video download --start/--end` and `search --download`)
-- A [memories.ai](https://app.memories.ai) API key
+- A [memories.ai](https://api-platform.memories.ai) API key
 
 ## License
 
