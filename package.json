@@ -1,0 +1,23 @@
+{
+  "name": "memories-cli",
+  "version": "1.0.0",
+  "description": "CLI for memories.ai — AI agent infrastructure for video understanding, memory, and search",
+  "type": "module",
+  "bin": {
+    "memories": "./bin/memories.js"
+  },
+  "scripts": {
+    "start": "node bin/memories.js",
+    "test": "node --test test/"
+  },
+  "keywords": ["memories.ai", "ai", "agent", "memory", "video", "cli"],
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^12.1.0",
+    "chalk": "^5.3.0",
+    "ora": "^8.1.0",
+    "cli-table3": "^0.6.5",
+    "conf": "^13.0.1",
+    "form-data": "^4.0.0"
+  }
+}
